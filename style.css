@@ -1,0 +1,27 @@
+#cnv{
+
+    border: 3px solid red;
+}
+.row{
+    display: flex;
+
+}
+.column{
+    display: flex;
+    flex-direction: column;
+}
+.form{
+    padding: 20px;
+    width:300px;
+    height: 300px;
+    background-color: brown;
+}
+
+.ecran{
+    font-size: 2rem;
+    color: white;
+    background-color: black;
+    width:300px;
+    height:50px;
+
+}
