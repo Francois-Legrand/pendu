@@ -6,40 +6,24 @@ let input = document.getElementById("input");
 let submit = document.getElementById("submit");
 let start = document.getElementById("start");
 let reponse;
-let recupInput = document.getElementById("recupInput");
-let mots = ["jean", "thomas", "baptiste", "mathilde"];
+let mots = ["adoption", "amitié", "cabane", "chapeaux","citrouille","corbeau","dictionnaire","figurine","indépendence","journal","lunettes","mercantile","pasteur","ruisseau","tableau","vélocipède"];
 let count = 0;
-lettreTrouve = 0;
-
+let lettreTrouve = 0;
+let stockUnderscore = [];
 function randomMot() {
-
+    
     reponse = mots[Math.floor(Math.random() * mots.length)];
     stock = reponse.split('')
     console.log(stock);
-    
-    //ecran.textContent += stock.join("");
+    ecran.textContent = "";
 
     for(let i = 0; i < stock.length; i++){
 
-        ecran.textContent += stock[i] = "-";
+        ecran.textContent += "-";
+
     }
-    
-    //ecran.textContent += ecran;
-    /*ecran.textContent = "";
-    for (i = 0; i < reponse.length; i++) {
-
-        
-        lettreCache = reponse[i];
-        
-        
-        lettreCache = "-";
-        //lettreCache = lettreCache.split('');
-        
-
-        ecran.textContent += lettreCache;
-
-
-    }*/
+    stockUnderscore = ecran.textContent.split('');
+        console.log(stockUnderscore);
 }
 start.addEventListener("click", randomMot);
 
@@ -49,21 +33,18 @@ function analyz(){
     for(i = 0; i < stock.length; i++){
 
         if(stock[i] == input.value){
-            console.log("ta lettre est a la "+i+"ème position")
+
+            stockUnderscore[i] = stock[i];
+            ecran.textContent = stockUnderscore.join("");
             trouve = true;
             lettreTrouve++;
         }
 
     }
-        //if(input.value == mot[i]){
-
-        //}
-
-
-
-
-
-    //si tu ne trouve pas
+    if(ecran.textContent == reponse){
+        alert("Win!");
+    }
+    console.log(stockUnderscore)
     
     if(!trouve){
         count++
@@ -71,31 +52,31 @@ function analyz(){
     }
     if(count == 1){
         ctx.beginPath();
-        ctx.strokeStyle = "#000";
-        ctx.lineWidth = 3;
-        ctx.moveTo(50, 300);//sol
-        ctx.lineTo(250, 300);//sol
+        ctx.strokeStyle = "#fff";
+        ctx.lineWidth = 10;
+        ctx.moveTo(50, 590);//sol
+        ctx.lineTo(550, 590);//sol
         
     }else if(count == 2){
-        ctx.moveTo(150, 300);//poutre
+        ctx.moveTo(150, 590);//poutre
         ctx.lineTo(150, 50);//poutre
-        ctx.lineTo(300, 50);//poutre
-        ctx.lineTo(300, 80);//poutre
+        ctx.lineTo(350, 50);//poutre
+        ctx.lineTo(350, 200);//poutre
     }else if(count == 3){
-        ctx.moveTo(320, 100);
-        ctx.arc(300, 100, 20, 0, Math.PI * 2,true);//tete
+        ctx.moveTo(385, 245);
+        ctx.arc(350, 245, 40, 0, Math.PI * 2,true);//tete
     }else if(count == 4){
-        ctx.moveTo(300, 120);//corp
-        ctx.lineTo(300, 200);//corp
+        ctx.moveTo(350, 290);//corp
+        ctx.lineTo(350, 380);//corp
     }else if(count == 5){
-        ctx.moveTo(350, 150);//bras
-        ctx.lineTo(250, 150);//bras
+        ctx.moveTo(400, 300);//bras
+        ctx.lineTo(300, 300);//bras
     }else if(count == 6){
-        ctx.moveTo(340, 250);//jambes
-        ctx.lineTo(300, 200);//jambes
-        ctx.lineTo(260, 250);//jambes
+        ctx.moveTo(410, 430);//jambes
+        ctx.lineTo(350, 380);//jambes
+        ctx.lineTo(300, 430);//jambes
     }else if(count == 7){
-        alert("death");
+        alert("hanged");
     }
     ctx.stroke();
 }
@@ -186,20 +167,6 @@ submit.addEventListener("click", analyz);
 //ctx.stroke();
 
 
-                //personnage
-
-
-
-
-
-                //personnage
-
-//marchine de torture
-
-
-
-
-                //marchine de torture
 
 
 

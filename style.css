@@ -1,27 +1,53 @@
 #cnv{
-
-    border: 3px solid red;
+    width: 334px;
+    background-image: url('92301438f5c3ee3ad542379b9a570783.jpg');
+    margin-bottom: -10px;
 }
 .row{
     display: flex;
-
-}
-.column{
-    display: flex;
     flex-direction: column;
 }
+.column{
+    height: 334px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .form{
-    padding: 20px;
-    width:300px;
-    height: 300px;
-    background-color: brown;
+    width:334px;
+    height: 334px;
+    background-image: url('angoisse-composantes-peur.jpg');
 }
 
 .ecran{
-    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 0px;
+    font-size: 3rem;
     color: white;
     background-color: black;
-    width:300px;
-    height:50px;
+    width:334px;
+    height:100px;
 
+}
+#input{
+    font-family: 'Permanent Marker', cursive !important;
+    text-align: center;
+    height: 60px;
+    font-size: 2.5rem;
+    background-color: black;
+    color: aliceblue;
+    border: 0px;
+}
+
+button{
+    font-family: 'Permanent Marker', cursive !important;
+    font-size: 2rem !important;
+    border-radius: 0px !important;
+}
+.game{
+    width:334px;
+    background-color: aqua;
+}
+.container{
+    width: 334px !important;
 }

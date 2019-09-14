@@ -4,20 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
-    <div class="row">
-        <canvas id="cnv" width="600" height="600"></canvas>
-        <div class="form">
-            <div id="recupInput"></div>
-            <div class="column">
-                <p id="ecran" class="ecran"></p>
-                <label class= "label" for="mot">Entrez votre mot</label>
-                <input id="input" type="text" name ="mot" id="mot" placeholder="Ton mot">
-                <button id="submit">Envoyer</div>
-                <button id="start">Start Game</button>
+    <div class="container">
+        <div class="game">
+            <p id="ecran" class="ecran"></p>
+            <canvas id="cnv" width="600" height="600"></canvas>
+            <div class="form">
+                <div class="column">
+                    
+                    <input id="input" type="text" name ="mot" id="mot" placeholder="Entre Ta Lettre">
+                    <button type="button" class="btn btn-danger" id="submit">Envoyer</button>
+                    <button type="button" class="btn btn-warning"id="start">Start Game</button>
+                </div>
             </div>
         </div>
     </div>
