@@ -1,37 +1,61 @@
+//on associe une variable aux ID et aux class qui nous intéresse
 let canvas = document.getElementById("cnv");
 let ctx = canvas.getContext("2d");
+//ecran est la variable qui affichera le texte
 let ecran = document.getElementById("ecran");
+//stock est la variable qui stockera le mot afin de le transformer en tableau par exemple.
 let stock = document.querySelector("ecran");
+//input est la variable qui stockera la valeur du champ à saisir ex: input.value
 let input = document.getElementById("input");
+//submit est la variable qui enverra les informations dans la variable ecran et elle va aussi les traiter.
 let submit = document.getElementById("submit");
+//start est la variable qui commencera la partie en génerant un mot aléatoire et elle va aussi transformer les mots en underscrore et enfin générer des tableaux pour chacun d'entre eux.
 let start = document.getElementById("start");
+//on déclare une variable en dehors de toutes functions afin quelle soit accessible partout.
+// réponse est la variable qui stockera le mot.
 let reponse;
+//mots est la variable qui contient des mots ans un tableau
 let mots = ["adoption", "amitié", "cabane", "chapeaux","citrouille","corbeau","dictionnaire","figurine","indépendence","journal","lunettes","mercantile","pasteur","ruisseau","tableau","vélocipède"];
+//count est la variable qui servira de compteur
 let count = 0;
+//stockUnderscore est la variable qui stockera les underscores dans un tableau
 let stockUnderscore = [];
 
+//la function drawCanvas initialise (effacement) le Canvas
 function drawCanvas() {
-    count = 0;
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
   }
-function randomMot() {
-    
-    drawCanvas();
-    reponse = mots[Math.floor(Math.random() * mots.length)];
-    stock = reponse.split('')
-    console.log(stock);
+//la function 
+function startGame() {
+    //lorsque l'on clic sur start on veut que l'affichage s'initialise
     ecran.textContent = "";
+    //on efface le dessin
+    drawCanvas();
+    //on stock dans la variable réponse le mot random
+    reponse = mots[Math.floor(Math.random() * mots.length)];
 
+    console.log("Le mot random est "+reponse);
+    //on stock dans la variable stock le mot random qu'on transforme en tableau
+    stock = reponse.split('');
+    console.log(stock);
+    
+    //on parcours chaque valeur du tableau
     for(let i = 0; i < stock.length; i++){
-
+        //on appel le contenu textuel de la variable ecran (comme la variable ecran cible un id html, le contenu s'affichera dans la balise html qui contient cet id html)
+        //de plus, on ajoute dans la variable ecran.textContent "-". on ajoutera "-" jusqu'a la fin de la longueur de stock
+        //variante de la ligne ci-dessous: ecran.textContent = ecran.textContent + "-"
+        //imaginons que ecran.textContent = 0 après que ecran.textContent = ecran.textContent + "-" ecran.textContent est maintenant = "0-"
         ecran.textContent += "-";
 
     }
+    //la variable stockUnderscore stock "-" qu'on transforme en tableau
     stockUnderscore = ecran.textContent.split('');
         console.log(stockUnderscore);
 }
-start.addEventListener("click", randomMot);
+//on ajoute un évenement au click de la variable start en appelant la function startGame
+start.addEventListener("click", startGame);
 
 function analyz(){
 

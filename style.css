@@ -50,4 +50,5 @@ button{
 }
 .container{
     width: 334px !important;
+    padding-left: 0 !important;
 }
