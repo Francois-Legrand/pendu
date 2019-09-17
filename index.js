@@ -7,15 +7,15 @@ let ecran = document.getElementById("ecran");
 let stock = document.querySelector("ecran");
 //input est la variable qui stockera la valeur du champ à saisir ex: input.value
 let input = document.getElementById("input");
-//submit est la variable qui enverra les informations dans la variable ecran et elle va aussi les traiter.
+//submit est la variable qui lancera la function analyz.
 let submit = document.getElementById("submit");
-//start est la variable qui commencera la partie en génerant un mot aléatoire et elle va aussi transformer les mots en underscrore et enfin générer des tableaux pour chacun d'entre eux.
+//start est la variable qui lancera la function startGame
 let start = document.getElementById("start");
 //on déclare une variable en dehors de toutes functions afin quelle soit accessible partout.
 // réponse est la variable qui stockera le mot.
 let reponse;
 //mots est la variable qui contient des mots ans un tableau
-let mots = ["adoption", "amitié", "cabane", "chapeaux","citrouille","corbeau","dictionnaire","figurine","indépendence","journal","lunettes","mercantile","pasteur","ruisseau","tableau","vélocipède"];
+let mots = ["adoption", "amitie", "cabane", "chapeaux","citrouille","corbeau","dictionnaire","figurine","independence","journal","lunettes","mercantile","pasteur","ruisseau","tableau","velocipede"];
 //count est la variable qui servira de compteur
 let count = 0;
 //stockUnderscore est la variable qui stockera les underscores dans un tableau
@@ -27,7 +27,7 @@ function drawCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
   }
-//la function 
+//la function startGame commencera la partie en génerant un mot aléatoire et elle va aussi transformer les mots en underscrore et enfin générer des tableaux pour chacun d'entre eux.
 function startGame() {
     //lorsque l'on clic sur start on veut que l'affichage s'initialise
     ecran.textContent = "";
@@ -54,32 +54,38 @@ function startGame() {
     stockUnderscore = ecran.textContent.split('');
         console.log(stockUnderscore);
 }
-//on ajoute un évenement au click de la variable start en appelant la function startGame
+//on ajoute un évenement au click à la variable start en appelant la function startGame
 start.addEventListener("click", startGame);
 
+//la function analyz va traiter les informations, remplacer les underscores par les lettres trouvés, générer le dessin du pendu et afficher si le jeux est gagné ou perdu.
 function analyz(){
-
+    //la variable trouve est sur true lorsqu'un mot est trouvé et est sur false lorsque qu'aucune lettre est trouvé.
     let trouve = false;
+    //on parcours chaque valeur du tableau
     for(i = 0; i < stock.length; i++){
-
+        //Si une des lettres stocké est egal à la lettre envoyé
         if(stock[i] == input.value){
-
+            //la valeur du tableau stockUnderscore est egal à la valeur du tableau stock(n'oublions pas qu'une valeur de tableau a aussi une position)
+            //a présent l'une des valeurs de notre tableau stockUnderscore change lorsque une lettre est egal a celle envoyé, maintenant nous voulons l'afficher
             stockUnderscore[i] = stock[i];
+            //le texte de la variable ecran est egal au tableau stockUnderscore on y ajoute la méthode join pour annuler les espaces du tableau ici les virgules
             ecran.textContent = stockUnderscore.join("");
             trouve = true;
         }
 
     }
+    //si le texte de la variable ecran est egal la variable reponse c'est gagner
     if(ecran.textContent == reponse){
         alert("Win!");
         
     }
     console.log(stockUnderscore)
-    
+    //si la variable trouve est false on incremente count
     if(!trouve){
         count++
         console.log(count)
     }
+    //si count est egal à 1 on execute la premiere partie du canvas
     if(count == 1){
         ctx.beginPath();
         ctx.strokeStyle = "#fff";
@@ -110,5 +116,6 @@ function analyz(){
     }
     ctx.stroke();
 }
+
 submit.addEventListener("click", analyz);
- 
+//on ajoute un évenement au click à la variable submit en appelant la function analyz
